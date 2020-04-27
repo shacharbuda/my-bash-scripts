@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# This script starts vlc on background, and plays or stops the RADIO_URL from enviroment variables
+# This script starts vlc on background, and plays or stops the RADIO_URL from accepted variable
+# Running (I recommend to use as keyboard shortcut too): 
+#   env RADIO_URL="http://example.com" path-to-script-dir/vlc-play-music-url.sh
 
 # Error handling
 set -eu -o pipefail
