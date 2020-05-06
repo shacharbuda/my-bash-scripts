@@ -22,7 +22,13 @@ SPOTIFY_INSTANCE=$(ps -e | awk '{print $4}' | grep -wxm1 "spotify" || true)
 if ([[ -z $SPOTIFY_INSTANCE ]])
 then
   echo "Spotify is not running."
-  (spotify 1>/dev/null 2>&1 &) && sleep 4;
+  # Actually start spotify
+  spotify 1>/dev/null 2>&1 & disown;
+  # Minimize to tray
+  xdotool search --sync --onlyvisible --class "spotify" windowminimize
+
+  # Sleep to make sure activated when sending play command
+  sleep 4
 else
   echo "Spotify is running."
 fi
